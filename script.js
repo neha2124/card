@@ -1,54 +1,63 @@
-console.log("hello")
-const main = document.querySelector("#main")
-const Name =document.getElementById("Name").value
-const Pro =document.getElementById("profession").value
-const age =document.getElementById("age").value
+const option = document.getElementById("pro")
+let list = document.getElementById("main")
+let filter = document.getElementById('filter')
+let add = document.getElementById('user')
+// console.log(filter)
+let nameInput = document.getElementById("Name")
+let professionInput = document.getElementById("profession")
+let ageInput = document.getElementById('age')
 
-let data = [{ id:1 ,name : "john" , profession : "Developer" , Age:18} , {id:2 , name: "jack" , profession:"Devloper" , Age : 20}, {id:3 , name : "karan" , profession : "Admin" , Age:19}]
-let new_data = [{
-    id:3,
-    name:Name,
-    profession:Pro,
-    Age:age
+const userData = [
+  { id: 1, name: "John", age: "18", profession: "Devloper" },
+  { id: 2, name: "Jack", age: "20", profession: "Devloper" },
+  { id: 3, name: "Karen", age: "19", profession: "admin" },
+]
 
-}]
-const add_data= () =>{
+filter.addEventListener('click',filterProfession)
+add.addEventListener('click',addUser)
 
-
-    // console.log(new_data)
-    new_data.id++
-    data = [...data,...new_data]
-    console.log(data)
-    
-    }
-    console.log(data)
-//    function filterCard () =>{
-
-//    }
-
-function updateDom(providedata = data) {
-
-    providedata.forEach((item) => {
-        const div = document.createElement('div')
-        div.innerHTML = `<span> ${item.id} Name:${item.name}  Profession : ${item.profession} Age:${item.Age} </span> `
-        div.classList.add('person')
-        main.appendChild(div)
-    })
-
-    //    console.log(data)
+function updateDom (data){
+  list.innerHTML=""
+  data.forEach((item)=>{
+    let newDiv = document.createElement("div")
+    newDiv.innerHTML =`id : ${item.id}  Name : ${item.name} age: ${item.age} profession : ${item.profession}`
+   newDiv.classList.add('person')
+    list.append(newDiv)
+  })
 }
-updateDom()
 
-
-// document.querySelector(".filter").addEventListener('click',()=> FileList())
-
-   document.querySelector(".add").addEventListener('click',add_data())
- document.querySelector(".add").addEventListener('click',()=>updateDom())
-   
-    
-
-
-
+function filterProfession () {
+  let select = option.value
+  // console.log(select)
+  if(select == "profession"){
+    alert("please select profession")
+  }else{
+    let filterData = userData.filter((item)=>{
+      return item.profession == select
+    })
+       updateDom(filterData)
+  }
+}
+function addUser (){
  
- 
- 
+  let name = nameInput.value
+  let age = ageInput.value
+  let profession = professionInput.value
+  if(name != "" && profession != "" && age != ""){
+    let newData = {
+      id:userData.length+1,
+      name,
+      age,
+      profession
+
+
+    }
+    userData.push(newData)
+    console.log(userData)
+     updateDom(userData)
+  }else{
+    alert("please fill all the input")
+  }
+}
+
+

@@ -15,7 +15,11 @@ body{
     background-color: black;
     color: whitesmoke;
     padding: 1.2em;
-    margin: 2rem auto 1rem 5rem;
+    margin: 2rem auto 1rem 1rem;
+    word-spacing: 3px;
+    font-size: 1.2em;
+    text-transform: capitalize;
+
     
 }
 #pro{
@@ -26,7 +30,10 @@ body{
     font-size: 1.2em;
     border: 1px solid white;
 }
-.filter,.add{
+#pro >option{
+    background-color: black;
+}
+#filter,.add{
     background-color: transparent;
     background-color: transparent;
     color: white;
@@ -52,8 +59,8 @@ span{
 }
 
 label{
-    display:inline-block;
-    margin: 12px;
+    /* display:inline-block; */
+    margin: 57px;
     font-size: 1.3em;
 }
 input{
@@ -62,4 +69,5 @@ input{
     padding: 8px 24px;
     border: 1px solid whitesmoke;
     background-color: transparent;
+    color: wheat;
 }
